@@ -1,0 +1,16 @@
+{
+  "description": "Optional lifecycle hooks for clients supporting plugin hooks (runs fast non-destructive validation on skill/plugin edits).",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 scripts/validate_plugin.py --quick"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "creator",
+  "version": "1.0.0",
+  "description": "Multi-purpose AI engineering & clinical-grade Agent Plugin bundling 4 progressive-disclosure skills (thau-hieu, creator-skill, ui-ux, qa-qc), a zero-dependency local Python MCP server (AST/QA audit, WCAG 2.2 linter, skill validator, blast-radius analyzer, and PHI-guarded PubMed/ClinicalTrials/OpenFDA EBM tools), plus optional HL7 FHIR R4 integration templates.",
+  "homepage": "https://github.com/phanvutuankiet0802/creator",
+  "repository": "https://github.com/phanvutuankiet0802/creator",
+  "license": "MIT",
+  "keywords": [
+    "agent-plugins",
+    "agent-skills",
+    "mcp",
+    "task-router",
+    "skill-architect",
+    "ui-ux",
+    "wcag",
+    "qa-qc",
+    "medical-ai",
+    "ebm",
+    "fhir",
+    "healthbench",
+    "antigravity"
+  ],
+  "extensions": {
+    "com.openai": {
+      "hooks": "./hooks/hooks.json",
+      "interface": {
+        "displayName": "Creator Agent Suite",
+        "shortDescription": "4 Core+Medical Skills & Local QA/UI/EBM MCP Server",
+        "longDescription": "Universal multi-project AI engineering plugin with lazy-loaded clinical AI modules (HealthBench, G-AMIE, NHS WCAG 2.2, FHIR R4) and a zero-dependency Python MCP server for static QA, WCAG contrast verification, skill validation, and PHI-guarded PubMed/ClinicalTrials/OpenFDA lookup.",
+        "category": "Developer Tools",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "brandColor": "#1D4ED8",
+        "composerIcon": "./assets/icon.svg",
+        "logo": "./assets/icon.svg",
+        "defaultPrompt": [
+          "Use creator-skill to audit and design a new skill following the 4-stream workflow.",
+          "Use qa-qc to run an independent AST, security, and HealthBench clinical safety audit.",
+          "Use ui-ux to verify WCAG 2.2 contrast and cognitive ergonomics."
+        ]
+      }
+    }
+  }
+}

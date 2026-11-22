@@ -1,0 +1,16 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "creator-tools": {
+      "type": "stdio",
+      "command": "python3",
+      "args": [
+        "mcp-server/server.py"
+      ],
+      "env": {
+        "PYTHONUNBUFFERED": "1",
+        "CREATOR_PLUGIN_ROOT": "."
+      }
+    }
+  }
+}

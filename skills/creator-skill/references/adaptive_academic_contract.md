@@ -1,0 +1,21 @@
+# Adaptive Academic Contract v1.0 — áp dụng mọi môn học
+
+**Thứ tự ưu tiên (đã được người dùng xác nhận):** (1) hợp đồng đầu ra cố định của từng skill; (2) giới hạn học được của người dùng (BÀI GIẢNG TỐI ĐA 9 TRANG A4, không được nới); (3) chất lượng P0/P1 và phân loại theo LO; (4) quota mềm về số câu/thẻ/ca và tỷ lệ dạng câu hỏi. **Riêng `giao-trinh-tong-hop` luôn xuất ĐÚNG 4 tệp**: PDF bài giảng (4–9 trang A4 theo thiết kế gốc), HTML flashcard, HTML MCQ, HTML MEQ. Không bỏ tệp MEQ chỉ vì domain ít tính lâm sàng; thay đổi *kiểu câu MEQ* phù hợp (chẳng hạn chuỗi giải thích cơ chế hoặc phân tích dữ liệu). Không bơm câu dễ để đủ quota mềm.
+
+**Trần 9 trang là yêu cầu học tập bắt buộc**: tự chọn lõi và giải thích dễ hiểu, loại P3/P4 trước, nén trùng lặp chứ KHÔNG nén nhân-quả thành văn khó đọc. Nếu P0/P1 không thể giải thích hợp lý trong 9 trang sau chọn lọc, đánh dấu `SCOPE_CONFLICT` và ngừng phát hành, không lén nới giới hạn hoặc nói đã đủ mọi ý.
+
+**Hai chế độ chạy:** gọi trực tiếp một skill => giữ độc lập, sử dụng nguồn người dùng cung cấp hoặc kho nếu được chỉ định; gọi qua `giao-trinh-tong-hop` => phối hợp qua hợp đồng 4 đầu ra. `creator-skill` là PM/Tech Lead đa nhiệm trong Team-Agent gồm `thau-hieu` (đặc tả), `ui-ux` (giao diện), `tham-dinh-su-pham` (chuyên môn/sư phạm), `qa-qc` (kiểm thử & quyền phủ quyết), có nhiệm vụ sửa đúng nguyên nhân và bảo toàn chức năng. Không giả vờ rằng tên Team-Agent đã đồng nghĩa thực sự chạy review độc lập.
+
+**Nguồn truy xuất:** nguồn không chỉ là tệp người dùng upload. `nap-data` lưu full-text Markdown + `sources_index.md` + ánh xạ `notebook_id`/`source_id`; NotebookLM qua UUID được dùng khi connector thực tế khả dụng, nhất là lấy hình trang gốc. Trực tiếp dùng tài liệu đính kèm là đường chạy thay thế theo tính độc lập của skill. Tuyệt đối không tự bịa payload NotebookLM; phân biệt 'đã ánh xạ UUID' với 'đã gọi API thành công'. Luồng `nap-data` và NotebookLM không được vô hiệu hóa khi thêm Academic Blueprint.
+
+**Quy trình**: (1) đăng ký nguồn primary/external tách bạch; (2) AI đề xuất LO từ tài liệu thực, theo domain đa nhãn, competency và P0..P4, ghi rõ source IDs, lý do P0 và hậu quả nếu thiếu; (3) kiểm định blueprint; (4) lựa chọn loại sản phẩm tương thích năng lực; (5) sản xuất có bắc cầu logic và nội dung đúng nguồn; (6) kiểm định bao phủ đúng từng LO P0, kiểm định câu suy luận, chống lộ đáp án và rỗng kiến thức; (7) review độc lập chất lượng ngữ nghĩa + chính xác y khoa + độ rõ diễn đạt + độ khó với đề chuẩn; (8) chỉ phát hành khi được duyệt thật, nếu không REPORT REVIEW_REQUIRED hoặc BLOCKED.
+
+**Phân loại ở mức từng LO, không chỉ tên môn.** Một bài có thể pha trộn phẫu thuật, giải phẫu, sinh lý, dược lý và dịch tễ. Định nghĩa/dịch tễ không mặc định ít quan trọng: khi đó là trọng tâm môn học phải là P0/P1. Không thêm ca bệnh cho bài không có mục tiêu quyết định lâm sàng. Trong bài ngoại khoa, ưu tiên những quyết định lâm sàng nếu nguồn và mục tiêu chứng minh điều đó.
+
+**Nguồn**: Tầng 1 bài giảng là chuẩn ưu tiên học/thi nhưng không tự động chứng minh đúng lâm sàng; tầng 2 tra cứu độc lập phải ghi rõ nguồn + date/guideline khi có. Trường hợp xung đột phải hiển thị hai quan điểm và cần kiểm chứng, không sửa ngầm nguồn.
+
+**MEQ thích ứng:** cần có tiến triển dữ kiện, suy luận và phản hồi nhưng không phải mọi câu đều buộc người học ra quyết định điều trị; câu MEQ có thể yêu cầu chẩn đoán, giải thích, diễn giải cận lâm sàng, tính toán, nhận diện cấu trúc, hoặc bảo vệ lựa chọn tùy domain/LO. Không bắt đặt `decision_or_conclusion` và `alternative_rejected_why` cho mọi ô trả lời nếu không đúng loại câu.
+
+**Chặn giả thuyết**: Đừng đánh đồng match từ khóa/độ dài/văn phong Bloom với độ bao phủ, hiểu sâu và phân hóa thật. Không tuyên bố nguồn đã kiểm chứng hoặc quá trình review độc lập nếu chỉ chạy script. Tham chiếu `scripts/academic_quality_engine.py` ở các skill có bản sao, còn skill tiện ích chỉ có nhiệm vụ giữ nguyên thông tin phân loại và dấu vết nguồn.
+
+**Tương thích cũ**: Builder cũ, self-test cũ vẫn chạy nhưng chỉ được gọi `LEGACY_UNVERIFIED`, không đại diện chứng nhận chất lượng theo hợp đồng mới. Nếu người dùng không cung cấp blueprint, skill phải tự soạn bản nháp từ nguồn, tự kiểm qua agent riêng và báo những mục chưa thẩm định; không tự tuyên bố READY.

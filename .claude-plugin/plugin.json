@@ -1,0 +1,10 @@
+{
+  "name": "creator",
+  "version": "1.0.0",
+  "description": "Multi-purpose AI engineering & clinical-grade Agent Plugin bundling 4 progressive-disclosure skills (thau-hieu, creator-skill, ui-ux, qa-qc), 4 specialized subagent roles, lifecycle hooks, and a zero-dependency Python MCP server (QA/UI/Skill validators + PHI-guarded PubMed/ClinicalTrials/OpenFDA tools).",
+  "license": "MIT",
+  "skills": "./skills/",
+  "agents": "./agents/",
+  "hooks": "./hooks/hooks.json",
+  "mcpServers": "./mcp.json"
+}

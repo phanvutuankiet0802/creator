@@ -1,0 +1,12 @@
+# Bộ Đề Kiểm Thử Biến Hình, Săn Lỗi Tiên Đoán 18 Kịch Bản, Kiến Trúc 2 Chiều NBME & Đếm Ký Tự Đáp Án (`evals/qa_metamorphic_suite.md` v2.7)
+
+| Mã Ca Kiểm Thử | Loại Kiểm Thử (`Testing Technique`) | Đầu vào Đối chứng (`Test Input`) | Kỳ vọng Phán quyết từ `qa_test_harness.py` |
+| :--- | :--- | :--- | :--- |
+| **QA-01** | Phân tích tĩnh `AST` trên mã nguồn hợp lệ vs. mã nguồn lỗi cú pháp | Chuỗi code Python chuẩn vs. chuỗi code thiếu dấu `:` hoặc gọi lệnh cài đặt mạng | Bắt chính xác lỗi `AST_SYNTAX_ERROR` và `FORBIDDEN_SANDBOX_NETWORK_CALL` (`S1 Blocker`). |
+| **QA-02** | Kiểm thử Giá trị Biên (`Boundary Value Analysis`) cho tỷ lệ `<b>` và nhãn cấm | Văn bản ở biên `18.0%` bold (Hợp lệ) vs. `18.5%` bold kèm `[Must know]` (Vi phạm) | Cho qua mẫu `18.0%`, kích hoạt `tripwire_triggered = True` với mẫu `18.5%` + `[Must know]`. |
+| **QA-03** | Quét mẫu IOC giả 4 chấm (`ERR-21`) trên tài liệu `.md` | Văn bản có đề mục dạng `A.B.C.D` (4 số nối bằng dấu chấm) vs. văn bản đã chuẩn hóa `1.2.3-4` | Phát hiện ngay `ERR21_IPV4_IOC_FALSE_POSITIVE_RISK` trên mẫu 4 chấm. |
+| **QA-04** | Quét độ lệch phiên bản (`DRIFT-01..13`) ở chế độ `Read-Only` | Bản mô tả thiếu `audit_mcq_option_length_parity`, `audit_vignette_chronological_flow` hoặc `audit_orth_2d_vignette_and_embedded_matrix` | Ghi nhận chính xác cảnh báo `DRIFT-01..13`. |
+| **QA-05** | Tính toán độ tin cậy `pass@k` và `pass^k` (Anthropic Agent Evals) | `p = 0.90`, `k = 3` | `pass_at_k = 0.999`, `pass_power_k = 0.729`. |
+| **QA-06 (`FB-29`)** | Cổng Kiểm chứng Tri thức Mới (`evaluate_knowledge_improvement_gate`) | (A) Bản nâng cấp giữ nguyên 100% tính năng cũ và tăng điểm vs. (B) Bản nâng cấp làm mất 1 hàm cũ | Cấp `KNOWLEDGE_ADMISSION_APPROVED` cho (A); bác bỏ `REJECTED` kèm nổ Tripwire cho (B). |
+| **QA-07 (`FB-30`, `FB-44`)** | Kiểm định Đếm Ký Tự Đáp Án Trắc Nghiệm (`audit_mcq_option_length_parity_qa`) | Đề thi có đáp án đúng dài gấp `> 1.35x` số ký tự TB nhiễu hoặc `longest_is_key_rate > 10%` | Phát hiện ngay `SYSTEMIC_LONGEST_KEY_BIAS_FB30` (`S1`) và `KEY_CHAR_LENGTH_CUE_FB30` (`S2`). |
+| **QA-08 (`FB-46 / LOCK-15`)** | Săn Lỗi Tiên Đoán 18 Kịch Bản (`run_predictive_premortem_fuzzing`) | Chạy tự động 18 kịch bản sập ngầm (lệch độ dài đáp án `> 10%`, đảo xét nghiệm lên trước khám thực thể, hội tụ đáp án `Convergence Cue`, bịa chỉ số `p_value`, tỷ lệ Khung THLS `< 85%`...) | Bắt trúng `18/18` kịch bản (`detection_rate = 1.0`, `premortem_passed = True`). |

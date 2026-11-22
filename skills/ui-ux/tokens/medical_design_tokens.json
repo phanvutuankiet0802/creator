@@ -1,0 +1,204 @@
+{
+  "$description": "W3C Design Tokens Community Group (DTCG 2025.10) Format Specification for Medical Pedagogy & Clinical Ecosystem (@ui-ux v1.5 - FB-01 -> FB-44 / LOCK-14)",
+  "color": {
+    "$type": "color",
+    "surface": {
+      "page": {
+        "$value": "#FFFFFF",
+        "$description": "60% Dominant Canvas - Pure white background for A4 PDF print and clean reading surfaces"
+      },
+      "webapp": {
+        "$value": "#F8FAFC",
+        "$description": "60% Dominant Canvas - Porcelain slate background for long-session HTML5 Quiz/Flashcard apps"
+      },
+      "container": {
+        "$value": "#EBF5FB",
+        "$description": "30% Secondary Structural Surface - Soft clinical blue for Python flowcharts (1150px) and summary boxes (FB-01)"
+      },
+      "card": {
+        "$value": "#F1F5F9",
+        "$description": "30% Secondary Structural Surface - Subtle neutral container for secondary callouts and metadata"
+      }
+    },
+    "text": {
+      "primary": {
+        "$value": "#111111",
+        "$description": "Pure Academic Black body text - Contrast ratio 18.88:1 on #FFFFFF (exceeds WCAG 2.2 AAA 7.0:1 requirement, FB-02)"
+      },
+      "secondary": {
+        "$value": "#334155",
+        "$description": "High-contrast slate for captions, table subheaders, and secondary annotations (Contrast ratio 10.3:1 on #FFFFFF)"
+      },
+      "on-structural": {
+        "$value": "#FFFFFF",
+        "$description": "White text on deep structural navy headers (#1E3A5F) - Contrast ratio 11.6:1"
+      }
+    },
+    "structural": {
+      "navy": {
+        "$value": "#1E3A5F",
+        "$description": "30% Structural Brand Navy for H1/H2 accents, table headers, and taskbar navigation"
+      },
+      "border": {
+        "$value": "#CBD5E1",
+        "$description": "Clean structural divider for tables, cards, and flowchart nodes"
+      }
+    },
+    "accent": {
+      "$description": "<= 10% Accent Color Budget strictly reserved for high-value clinical signals (FB-03, FB-06)",
+      "danger": {
+        "$value": "#B91C1C",
+        "$description": "Clinical Red Flag / Contraindication / Critical Warning (Contrast ratio 6.4:1 on #FFFFFF)"
+      },
+      "success": {
+        "$value": "#047857",
+        "$description": "Clinical Target / Correct SBA Option / Safe Threshold (Contrast ratio 5.5:1 on #FFFFFF)"
+      },
+      "caution": {
+        "$value": "#B45309",
+        "$description": "Near-Miss Discriminator / Dose Adjustment / Exam Note Highlight (Contrast ratio 5.0:1 on #FFFFFF)"
+      }
+    }
+  },
+  "typography": {
+    "$type": "dimension",
+    "pdf": {
+      "body-size": {
+        "$value": "12pt",
+        "$description": "Mandatory A4 lecture body font size (FB-02)"
+      },
+      "diagram-effective-size": {
+        "$value": "12pt",
+        "$description": "Mandatory effective font size on A4 paper for both inline Vector SVG (viewBox 630px, 12pt) and Python PIL Flowcharts (1150px canvas, >=28-29px font = 12pt A4, FB-43)"
+      },
+      "table-size": {
+        "$value": "11pt",
+        "$description": "Compact yet legible table cell font size for clinical comparison matrices"
+      },
+      "h1-size": {
+        "$value": "14pt",
+        "$description": "Document title scale"
+      },
+      "h2-size": {
+        "$value": "12.5pt",
+        "$description": "Major section heading scale (concise <= 8-10 words, FB-43)"
+      },
+      "h3-size": {
+        "$value": "12pt",
+        "$description": "Sub-section heading scale (concise <= 7-9 words, FB-43)"
+      }
+    },
+    "line-height": {
+      "$type": "number",
+      "body": {
+        "$value": 1.4,
+        "$description": "Optimal reading line-height for Vietnamese diacritics on A4"
+      },
+      "table": {
+        "$value": 1.32,
+        "$description": "Compact line-height for structured tables with .td-line blocks"
+      }
+    }
+  },
+  "ergonomics": {
+    "$type": "number",
+    "signaling": {
+      "bold-ratio-min": {
+        "$value": 0.08,
+        "$description": "Minimum recommended in-sentence bold keyword ratio (8%), exempting 100% of structural bullet/table lead-in labels (FB-27, FB-43)"
+      },
+      "bold-ratio-target-max": {
+        "$value": 0.15,
+        "$description": "Golden upper target for in-sentence bold keyword ratio (15%) (FB-27, FB-43)"
+      },
+      "bold-ratio-hard-cap": {
+        "$value": 0.18,
+        "$description": "Hard ceiling (18%) on in-sentence bold words after excluding structural lead-in headings (FB-27, FB-43)"
+      },
+      "bold-span-max-words": {
+        "$value": 6,
+        "$description": "Maximum words per in-sentence <b>/<strong> tag while strictly preserving compound Vietnamese medical terms intact (FB-27, FB-43)"
+      },
+      "h2-heading-max-words": {
+        "$value": 10,
+        "$description": "Maximum words for H2 section headings to ensure instant memorability (FB-43)"
+      },
+      "bullet-label-max-words": {
+        "$value": 6,
+        "$description": "Maximum words for left-edge bullet lead-in labels <li><b>Label:</b> (FB-43)"
+      }
+    },
+    "content-density-and-volume": {
+      "lecture-core-proposition-target": {
+        "$value": 0.85,
+        "$description": "80% - 90% recall of unique deduplicated clinical concepts (Vid U Slide U PNT) via inline micro-causal parenthetical compression (FB-40, FB-43)"
+      },
+      "true-academic-keyword-density": {
+        "$value": 0.12,
+        "$description": "10% - 15% true academic keyword words per 100 words of text (UMLS/MeSH/NBME standard, never 70/100 words, FB-43)"
+      },
+      "lecture-page-min": {
+        "$value": 4,
+        "$description": "Minimum A4 pages for lecture PDF (FB-10)"
+      },
+      "lecture-page-max": {
+        "$value": 9,
+        "$description": "Strict hard ceiling <= 9 A4 pages (Compact 4-5, Standard 5-7, Comprehensive 7-9 pages) via cross-source deduplication & micro-causal compression (FB-43)"
+      },
+      "flashcard-min-count": {
+        "$value": 50,
+        "$description": "Minimum flashcards per deck covering 100% lecture + Vid >> Slide >> PNT expansion (FB-32)"
+      },
+      "flashcard-max-count": {
+        "$value": 80,
+        "$description": "Standard upper bound for flashcards (flexible up to 100 for long lessons, FB-32)"
+      },
+      "quiz-min-question-count": {
+        "$value": 40,
+        "$description": "Minimum SBA questions per quiz (flexible upper bound >= 40 per FB-32)"
+      }
+    },
+    "mcq-option-balance": {
+      "max-key-to-avg-char-ratio": {
+        "$value": 1.35,
+        "$description": "Maximum allowed character ratio between the correct option and the mean of 3 distractors (FB-30)"
+      },
+      "max-key-to-max-distractor-char-ratio": {
+        "$value": 1.2,
+        "$description": "Maximum allowed character ratio between the correct option and the longest distractor (FB-30)"
+      },
+      "max-option-spread-char-ratio": {
+        "$value": 1.65,
+        "$description": "Maximum allowed character ratio between the longest and shortest option in a question (FB-30)"
+      },
+      "max-longest-is-key-rate": {
+        "$value": 0.1,
+        "$description": "Strict hard cap (<= 10% of total questions N >= 40, i.e., at most 4/40 questions) on how often the correct answer can be the longest option by character count (FB-30, FB-44 / LOCK-14)"
+      }
+    },
+    "color-budget": {
+      "dominant-neutral-ratio": {
+        "$value": 0.6,
+        "$description": "60% neutral background whitespace/canvas"
+      },
+      "structural-ratio": {
+        "$value": 0.3,
+        "$description": "30% structural navy/slate/light-blue containers"
+      },
+      "accent-hard-cap": {
+        "$value": 0.1,
+        "$description": "Maximum 10% accent color coverage across document elements (FB-03, FB-06)"
+      }
+    },
+    "diagram": {
+      "flowchart-width-px": {
+        "$value": 1150,
+        "$description": "Standard high-DPI width (1150px) for Python PIL summary flowcharts with >=28-29px font (= 12pt on A4, FB-01, FB-43)"
+      },
+      "svg-viewbox-width-px": {
+        "$value": 630,
+        "$description": "1:1 A4 printable width (167mm = 473.4pt = 630px @ 96dpi) for inline SVG diagrams so font-size=12pt renders at true 12pt without downscaling (FB-43)"
+      }
+    }
+  }
+}

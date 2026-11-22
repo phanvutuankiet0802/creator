@@ -1,0 +1,24 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "_comment": "Optional Level-3 Clinical Connector template. Copy relevant entries into mcp.json and supply credentials ONLY via environment variables (never commit secrets or real patient PHI).",
+  "mcpServers": {
+    "creator-tools": {
+      "type": "stdio",
+      "command": "python3",
+      "args": [
+        "mcp-server/server.py"
+      ],
+      "env": {
+        "PYTHONUNBUFFERED": "1",
+        "CREATOR_PLUGIN_ROOT": "."
+      }
+    },
+    "fhir-r4-remote": {
+      "type": "streamable-http",
+      "url": "${FHIR_MCP_SERVER_URL}",
+      "headers": {
+        "Authorization": "Bearer ${FHIR_MCP_ACCESS_TOKEN}"
+      }
+    }
+  }
+}

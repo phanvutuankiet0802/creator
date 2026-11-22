@@ -1,0 +1,13 @@
+{
+  "name": "creator-marketplace",
+  "owner": {
+    "name": "creator"
+  },
+  "plugins": [
+    {
+      "name": "creator",
+      "source": "./",
+      "description": "Multi-purpose AI engineering & clinical-grade Agent Plugin (4 progressive-disclosure skills + local QA/UI/EBM Python MCP server)."
+    }
+  ]
+}

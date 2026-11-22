@@ -1,0 +1,64 @@
+{
+  "$description": "Universal W3C Design Tokens (DTCG) for general Web Apps, Dashboards, and Digital Documents — WCAG 2.2 AA/AAA compliant.",
+  "color": {
+    "$type": "color",
+    "surface": {
+      "canvas": { "$value": "#FFFFFF", "$description": "Primary clean canvas (60% budget)" },
+      "subtle": { "$value": "#F8FAFC", "$description": "Secondary surface / sidebar / table stripe" },
+      "elevated": { "$value": "#F1F5F9", "$description": "Grouped card or panel surface" },
+      "border": { "$value": "#CBD5E1", "$description": "Default structural divider (>= 3:1 UI boundary when paired with dark strokes)" },
+      "border-strong": { "$value": "#64748B", "$description": "High-contrast input border (>= 4.5:1 on white)" }
+    },
+    "text": {
+      "primary": { "$value": "#0F172A", "$description": "Main body text (~17.8:1 AAA on #FFFFFF)" },
+      "secondary": { "$value": "#334155", "$description": "Secondary labels & captions (~10.4:1 AAA on #FFFFFF)" },
+      "muted": { "$value": "#475569", "$description": "Metadata & helper text (~7.5:1 AAA on #FFFFFF)" },
+      "inverse": { "$value": "#FFFFFF", "$description": "Text on dark accent backgrounds" }
+    },
+    "brand": {
+      "primary": { "$value": "#1D4ED8", "$description": "Primary action / link (~6.7:1 AA+ on #FFFFFF)" },
+      "primary-hover": { "$value": "#1E40AF", "$description": "Hover state (~8.7:1 AAA on #FFFFFF)" },
+      "primary-soft": { "$value": "#EFF6FF", "$description": "Soft highlight container" },
+      "focus-ring": { "$value": "#2563EB", "$description": "WCAG 2.2 visible keyboard focus outline" }
+    },
+    "semantic": {
+      "success": { "$value": "#15803D", "$description": "Success text/icon (~5.1:1 AA on #FFFFFF)" },
+      "success-soft": { "$value": "#F0FDF4", "$description": "Success callout background" },
+      "warning": { "$value": "#B45309", "$description": "Warning text/icon (~5.0:1 AA on #FFFFFF)" },
+      "warning-soft": { "$value": "#FFFBEB", "$description": "Warning callout background" },
+      "danger": { "$value": "#B91C1C", "$description": "Error / critical action (~6.4:1 AA+ on #FFFFFF)" },
+      "danger-soft": { "$value": "#FEF2F2", "$description": "Error callout background" },
+      "info": { "$value": "#0369A1", "$description": "Informational text/icon (~5.9:1 AA+ on #FFFFFF)" },
+      "info-soft": { "$value": "#F0F9FF", "$description": "Info callout background" }
+    }
+  },
+  "typography": {
+    "$type": "dimension",
+    "font-family": {
+      "sans": { "$value": "Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" },
+      "mono": { "$value": "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace" },
+      "print-serif": { "$value": "'Noto Serif', 'Times New Roman', Georgia, serif" }
+    },
+    "scale": {
+      "body-web": { "$value": "16px", "$description": "Base web body font size" },
+      "body-print": { "$value": "12pt", "$description": "Base A4 print font size" },
+      "line-height-body": { "$value": "1.55", "$description": "Comfortable reading line height" },
+      "measure-max": { "$value": "68ch", "$description": "Optimal reading line length (55-75 chars)" }
+    }
+  },
+  "accessibility": {
+    "wcag-version": "2.2",
+    "target-size-min-px": 24,
+    "target-size-recommended-px": 44,
+    "contrast-normal-aa": 4.5,
+    "contrast-normal-aaa": 7.0,
+    "contrast-ui-component": 3.0
+  },
+  "ergonomics": {
+    "color-budget-ratio": "60-30-10",
+    "bold-signaling-min-pct": 8,
+    "bold-signaling-max-pct": 15,
+    "max-bullet-lines-a4": 3,
+    "min-diagram-effective-pt": 12
+  }
+}

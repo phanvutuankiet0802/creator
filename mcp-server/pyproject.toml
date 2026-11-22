@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "creator-mcp-server"
+version = "1.0.0"
+description = "Zero-dependency Python stdio MCP server for the Creator Agent Plugin (QA/AST audit, WCAG 2.2 contrast checker, Agent Skill validator, blast-radius analyzer, and PHI-guarded PubMed/ClinicalTrials/OpenFDA lookup)."
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = []
+
+[project.scripts]
+creator-mcp = "server:main"
