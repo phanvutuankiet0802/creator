@@ -15,7 +15,10 @@ import re
 import sys
 from typing import Any, Dict, List, Set, Tuple
 
-from PIL import Image
+try:
+    from PIL import Image
+except ImportError:  # pragma: no cover - optional for raster image metadata checks
+    Image = None
 
 
 A4_PRINTABLE_WIDTH_PT = 473.4
@@ -223,6 +226,8 @@ def audit_diagram_font_size_12pt_ui(
         if src.startswith("data:image/") and ";base64," in src:
             try:
                 raw = base64.b64decode(src.split(";base64,", 1)[1])
+                if Image is None:
+                    raise ImportError("Pillow (PIL) is required to inspect embedded base64 raster images")
                 im = Image.open(io.BytesIO(raw))
                 w, _ = im.size
                 info_pt = im.info.get("effective_a4_font_pt")
